@@ -2,10 +2,13 @@ name: ABC Alerts
 
 on:
   schedule:
-    # Ejecuta todos los días a las 9:00 UTC
+    # Todos los días a las 09:00 UTC
     - cron: "0 9 * * *"
 
   workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
   run-alerts:
@@ -16,19 +19,18 @@ jobs:
 
       - name: Descargar código
         uses: actions/checkout@v4
-
+        with:
+          persist-credentials: true
 
       - name: Configurar Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
 
-
       - name: Instalar dependencias
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-
 
       - name: Ejecutar ABC Alerts
         env:
@@ -37,6 +39,19 @@ jobs:
           MAIL_USERNAME: ${{ secrets.MAIL_USERNAME }}
           MAIL_PASSWORD: ${{ secrets.MAIL_PASSWORD }}
           MAIL_TO: ${{ secrets.MAIL_TO }}
-
         run: |
           python main.py
+
+      - name: Guardar seen_offers.json
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add seen_offers.json
+
+          if git diff --cached --quiet; then
+            echo "No hay cambios para guardar."
+          else
+            git commit -m "Actualizar seen_offers.json"
+            git push
+          fi
