@@ -1,0 +1,67 @@
+distritos:
+  - 71
+  - 100
+  - 136
+
+
+modalidades:
+
+  - SECUNDARIA
+  - ARTISTICA
+  - TECNICO PROFESIONAL
+  - ADULTOS y CENS
+  - PSICOLOGIA
+
+
+
+incumbencias:
+
+  SECUNDARIA:
+
+    - CCD
+    - ECS
+    - PSI
+    - SST
+    - SYA
+    - PR
+
+
+  ARTISTICA:
+
+    - CCD
+    - PEE
+    - PRA
+    - PRT
+    - SYA
+    - YCS
+
+
+  TECNICO PROFESIONAL:
+
+    - CCD
+    - PDS
+    - PSI
+    - ARH
+    - ARL
+    - PIA
+    - PR
+
+
+  ADULTOS y CENS:
+
+    - PR
+    - C4S
+    - CFF
+    - CMS
+    - CNA
+    - 2O
+    - 3P
+    - 4S
+
+
+  PSICOLOGIA:
+
+    - GP
+    - MR
+    - OE
+    - PRE
