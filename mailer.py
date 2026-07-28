@@ -93,13 +93,14 @@ class MailSender:
             ) as server:
 
                 server.starttls()
-                """
+
+                
                 print("CONFIG:", vars(self.config))
                 print("SMTP SERVER:", self.config.smtp_server)
                 print("SMTP PORT:", self.config.smtp_port)
                 print("SMTP USER:", self.config.username)
                 print("PASSWORD LENGTH:", len(self.config.password))
-                """
+                
                 
 
                 server.login(
